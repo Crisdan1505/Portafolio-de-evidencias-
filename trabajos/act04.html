@@ -1,0 +1,670 @@
+<!DOCTYPE html> 
+<html lang="es"> 
+<head> 
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+<title>Calculadora de Conversiones - Números Complejos</title> 
+</head>
+<style> 
+/* ==================== CAMPOS DE ENTRADA ==================== */ 
+input[type="text"] { 
+    width: 120px; /* un poco más ancho */
+    padding: 10px 14px; 
+    border: 2px solid #95a5a6; /* borde más visible y gris suave */
+    border-radius: 8px; /* bordes más redondeados */
+    font-size: 15px; 
+    text-align: center; 
+    font-family: 'Roboto', sans-serif; /* tipografía moderna */
+    color: #2c3e50; /* color del texto */
+    background-color: #ecf0f1; /* fondo suave */
+    transition: all 0.3s ease; /* transición suave al enfocar */
+} 
+
+input[type="text"]:focus { 
+    outline: none; 
+    border-color: #e67e22; /* borde naranja al enfocar */
+    box-shadow: 0 0 8px rgba(230, 126, 34, 0.4); /* sombra suave */
+    background-color: #fff; /* cambia fondo a blanco al enfocar */
+} 
+ 
+/* ==================== RESULTADOS ==================== */ 
+.result { 
+    background-color: #ffffff; /* fondo blanco limpio */
+    padding: 18px; 
+    border-radius: 10px; /* bordes más redondeados */
+    border-left: 6px solid #e67e22; /* borde lateral más grueso y naranja */
+    font-family: 'Roboto', sans-serif; /* tipografía moderna */
+    font-size: 16px; 
+    color: #34495e; /* texto más suave y elegante */
+    min-height: 50px; 
+    display: flex; 
+    align-items: center; 
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* sombra ligera para profundidad */
+    font-weight: 600; /* semi-negrita más estética */
+    transition: all 0.3s ease; /* efecto suave al cambiar estilos */
+} 
+
+.result:hover {
+    border-left-color: #3498db; /* cambia el color del borde al pasar el cursor */
+    background-color: #f0f4f8; /* ligero cambio de fondo al hover */
+}
+ 
+/* ==================== BOTÓN LIMPIAR ==================== */ 
+.clear-btn { 
+    background-color: #e67e22; /* naranja moderno */
+    color: #fff; 
+    border: none; 
+    padding: 12px 24px; /* un poco más grande para mejor click */
+    border-radius: 8px; /* bordes más redondeados */
+    cursor: pointer; 
+    font-size: 15px; 
+    margin-top: 20px; 
+    display: block; 
+    margin-left: auto; 
+    margin-right: auto; 
+    font-family: 'Roboto', sans-serif; /* tipografía uniforme */
+    font-weight: 600; 
+    transition: all 0.3s ease; /* transición suave al hover */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15); /* ligera sombra */
+}
+
+.clear-btn:hover { 
+    background-color: #d35400; /* naranja más oscuro al hover */
+    transform: translateY(-2px); /* efecto elevación */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2); /* sombra más pronunciada */
+}
+
+/* ==================== INSTRUCCIONES ==================== */ 
+.instructions { 
+    background-color: #fdf6e3; /* fondo más claro y cálido */
+    padding: 20px; 
+    border-radius: 10px; /* bordes más redondeados */
+    margin-bottom: 25px; 
+    font-size: 15px; 
+    color: #34495e; /* texto más elegante */
+    font-family: 'Roboto', sans-serif; /* tipografía uniforme */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* sombra ligera */
+    line-height: 1.6; /* mejor lectura */
+    transition: all 0.3s ease; 
+}
+
+.instructions ul { 
+    margin-left: 25px; 
+    margin-top: 10px; 
+    list-style-type: disc; /* estilo de viñetas más clásico */
+}
+
+.instructions li { 
+    margin-bottom: 8px; 
+}
+ 
+/* ==================== SECCIONES DE FORMULARIO ==================== */ 
+.form-section { 
+    margin-bottom: 30px; 
+    border: 1px solid #dcdfe6; /* borde más suave */
+    border-radius: 12px; /* bordes más redondeados */
+    padding: 25px; 
+    background: #ffffff; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* sombra ligera para profundidad */
+    transition: all 0.3s ease; 
+}
+
+.form-section:hover {
+    border-color: #e67e22; /* resalta el borde al pasar el cursor */
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1); /* sombra un poco más pronunciada */
+}
+
+.input-group { 
+    display: flex; 
+    align-items: center; 
+    gap: 12px; /* un poco más de separación entre elementos */
+    margin-bottom: 18px; 
+}
+
+.input-group:last-child { 
+    margin-bottom: 0; 
+}
+ 
+/* ==================== ETIQUETAS Y OPERADORES ==================== */ 
+label { 
+    min-width: 25px; 
+    font-weight: 600; /* un poco más fuerte para destacar */
+    color: #34495e; /* color elegante y moderno */
+    font-size: 16px; 
+    font-family: 'Roboto', sans-serif; /* tipografía uniforme */
+}
+
+.operator { 
+    font-size: 16px; 
+    color: #e67e22; /* color destacado y moderno */
+    margin: 0 8px; /* más espacio lateral para mejor legibilidad */
+    font-weight: 600; 
+    font-family: 'Roboto', sans-serif;
+}
+
+/* ==================== RESET BÁSICO ==================== */ 
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+} 
+ 
+/* ==================== ESTRUCTURA GENERAL ==================== */ 
+body { 
+    font-family: 'Roboto', sans-serif; /* tipografía moderna y uniforme */
+    background-color: #f0f4f8; /* color de fondo más suave y moderno */
+    padding: 20px; 
+    line-height: 1.6; 
+    color: #34495e; /* color de texto principal uniforme */
+    transition: background 0.3s ease; 
+}
+
+.container { 
+    max-width: 800px; 
+    margin: 0 auto; 
+    background: #ffffff; 
+    border-radius: 12px; /* bordes más redondeados */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08); /* sombra más suave y moderna */
+    padding: 35px; 
+    transition: all 0.3s ease; 
+}
+
+.container:hover {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12); /* sombra un poco más marcada al hover */
+}
+ 
+/* ==================== ENCABEZADOS ==================== */ 
+h1 { 
+    text-align: center; 
+    color: #e67e22; /* color moderno y llamativo */
+    margin-bottom: 30px; 
+    font-weight: 600; /* más visible */
+    font-size: 32px; /* un poco más grande */
+    font-family: 'Roboto', sans-serif; /* tipografía uniforme */
+    text-transform: uppercase; /* opcional: mayúsculas para estilo moderno */
+    letter-spacing: 1px; /* mejora la legibilidad */
+}
+
+h2 { 
+    color: #34495e; /* color elegante y moderno */
+    margin-bottom: 18px; 
+    font-size: 20px; /* ligeramente más grande */
+    font-weight: 500; 
+    font-family: 'Roboto', sans-serif; /* tipografía uniforme */
+    border-bottom: 2px solid #e67e22; /* línea decorativa moderna */
+    padding-bottom: 5px; 
+}
+</style> 
+<body> 
+<!-- Forma Cartesiana --> 
+<div class="form-section"> 
+    <h2>Forma Cartesiana: a + bi</h2> 
+    <div class="input-group"> 
+        <label>z =</label> 
+        <input type="text" id="real" placeholder="a (ej: sqrt(2))"> 
+        <span class="operator">+</span> 
+        <input type="text" id="imag" placeholder="b (ej: sqrt(3))"> 
+        <span class="operator">i</span> 
+    </div> 
+    <div class="result" id="cartesian-result">Ingresa los valores 
+arriba</div> 
+</div>
+<!-- Forma Polar --> 
+<div class="form-section"> 
+<h2>Forma Polar: r(cos θ + i sin θ)</h2> 
+<div class="input-group"> 
+<label>z =</label> 
+<input type="text" id="modulus" placeholder="r (ej: sqrt(2))"> 
+<span class="operator">(cos</span> 
+<input type="text" id="angle" placeholder="θ (ej: pi/2)"> 
+<span class="operator">+ i sin</span> 
+<input type="text" id="angle2" placeholder="θ" readonly 
+style="background: #f0f0f0;"> 
+<span class="operator">)</span> 
+</div> 
+<div class="result" id="polar-result">Ingresa los valores arriba</div> 
+</div>
+<!-- Forma Exponencial --> 
+<div class="form-section"> 
+<h2>Forma Exponencial: re^(iθ)</h2> 
+<div class="input-group"> 
+<label>z =</label> 
+<input type="text" id="exp-modulus" placeholder="r (ej: sqrt(5))"> 
+<span class="operator">e^(i*</span> 
+<input type="text" id="exp-angle" placeholder="θ (ej: pi/4)"> 
+<span class="operator">)</span> 
+</div> 
+<div class="result" id="exponential-result">Ingresa los valores 
+arriba</div> 
+</div> 
+<button class="clear-btn" onclick="clearAll()">Limpiar Todo</button>
+</div> 
+<script>
+    /**
+ * CALCULADORA DE CONVERSIONES DE NÃšMEROS COMPLEJOS
+ * Permite conversiÃ³n entre forma cartesiana, polar y exponencial
+ * Soporta fracciones, raÃ­ces cuadradas y mÃºltiplos de pi
+ */
+
+// ============================================================================
+// VARIABLES GLOBALES
+// ============================================================================
+
+let isUpdating = false; // Previene bucles infinitos durante actualizaciones
+
+// ============================================================================
+// FUNCIONES DE PARSEO
+// ============================================================================
+
+/**
+ * Convierte una cadena de texto a nÃºmero, soportando expresiones matemÃ¡ticas
+ * @param {string|number} input - Entrada del usuario
+ * @returns {number} - Resultado numÃ©rico
+ */
+function parseNumber(input) {
+    // Manejar casos vacÃ­os o nulos
+    if (!input && input !== 0) return 0;
+    
+    const inputStr = input.toString().trim();
+    if (!inputStr) return 0;
+    
+    // Preparar expresiÃ³n reemplazando funciones matemÃ¡ticas
+    let expression = inputStr
+        .replace(/sqrt\s*\(/gi, 'Math.sqrt(')  // sqrt(2) â†’ Math.sqrt(2)
+        .replace(/pi\b/gi, 'Math.PI');         // pi â†’ Math.PI
+    
+    try {
+        // Evaluar expresiÃ³n de forma segura
+        const result = Function('"use strict"; return (' + expression + ')')();
+        
+        // Verificar que el resultado sea vÃ¡lido
+        if (isNaN(result) || !isFinite(result)) {
+            return 0;
+        }
+        
+        return result;
+    } catch (error) {
+        // En caso de error, retornar 0
+        return 0;
+    }
+}
+
+/**
+ * Convierte una cadena de texto a Ã¡ngulo en radianes
+ * @param {string|number} input - Entrada del usuario
+ * @returns {number} - Ãngulo en radianes
+ */
+function parseAngle(input) {
+    return parseNumber(input); // Usa la misma lÃ³gica que parseNumber
+}
+
+// ============================================================================
+// FUNCIONES DE FORMATO Y VISUALIZACIÃ“N
+// ============================================================================
+
+/**
+ * Convierte un Ã¡ngulo en radianes a su representaciÃ³n en mÃºltiplos de pi
+ * @param {number} angle - Ãngulo en radianes
+ * @returns {string} - RepresentaciÃ³n en formato pi
+ */
+function angleToPI(angle) {
+    if (Math.abs(angle) < 1e-8) return "0";
+    
+    // MÃºltiplos comunes de pi
+    const piMultiples = [
+        { value: Math.PI, text: "pi" },
+        { value: Math.PI/2, text: "pi/2" },
+        { value: Math.PI/3, text: "pi/3" },
+        { value: Math.PI/4, text: "pi/4" },
+        { value: Math.PI/6, text: "pi/6" },
+        { value: 2*Math.PI, text: "2*pi" },
+        { value: 3*Math.PI/2, text: "3*pi/2" },
+        { value: 2*Math.PI/3, text: "2*pi/3" },
+        { value: 3*Math.PI/4, text: "3*pi/4" },
+        { value: 5*Math.PI/6, text: "5*pi/6" },
+        { value: 5*Math.PI/4, text: "5*pi/4" },
+        { value: 4*Math.PI/3, text: "4*pi/3" },
+        { value: 5*Math.PI/3, text: "5*pi/3" },
+        { value: 7*Math.PI/4, text: "7*pi/4" },
+        // Valores negativos
+        { value: -Math.PI, text: "-pi" },
+        { value: -Math.PI/2, text: "-pi/2" },
+        { value: -Math.PI/3, text: "-pi/3" },
+        { value: -Math.PI/4, text: "-pi/4" },
+        { value: -Math.PI/6, text: "-pi/6" },
+        { value: -2*Math.PI, text: "-2*pi" },
+        { value: -3*Math.PI/2, text: "-3*pi/2" },
+        { value: -2*Math.PI/3, text: "-2*pi/3" },
+        { value: -3*Math.PI/4, text: "-3*pi/4" },
+        { value: -5*Math.PI/6, text: "-5*pi/6" }
+    ];
+
+    // Buscar coincidencia exacta
+    for (let pm of piMultiples) {
+        if (Math.abs(angle - pm.value) < 1e-8) {
+            return pm.text;
+        }
+    }
+
+    // Intentar expresar como fracciÃ³n de pi
+    const ratio = angle / Math.PI;
+    
+    // MÃºltiplo entero de pi
+    if (Math.abs(ratio - Math.round(ratio)) < 1e-8) {
+        const intRatio = Math.round(ratio);
+        if (intRatio === 1) return "pi";
+        if (intRatio === -1) return "-pi";
+        if (intRatio === 0) return "0";
+        return intRatio + "*pi";
+    }
+
+    // Fracciones simples de pi
+    const denominators = [2, 3, 4, 6, 8, 12];
+    for (let den of denominators) {
+        const num = ratio * den;
+        if (Math.abs(num - Math.round(num)) < 1e-8) {
+            const intNum = Math.round(num);
+            if (intNum === 0) return "0";
+            if (den === 1) {
+                return intNum === 1 ? "pi" : intNum === -1 ? "-pi" : intNum + "*pi";
+            }
+            if (intNum === 1) return "pi/" + den;
+            if (intNum === -1) return "-pi/" + den;
+            return intNum + "*pi/" + den;
+        }
+    }
+
+    // Si no se puede expresar como mÃºltiplo de pi, usar decimal
+    return angle.toFixed(6);
+}
+
+/**
+ * Formatea un nÃºmero mostrando fracciones y raÃ­ces cuando sea posible
+ * @param {number} num - NÃºmero a formatear
+ * @returns {string} - RepresentaciÃ³n formateada
+ */
+function formatNumber(num) {
+    if (Math.abs(num) < 1e-10) return "0";
+    
+    // RaÃ­ces cuadradas comunes
+    const sqrtValues = [
+        { value: Math.sqrt(2), text: "âˆš2" },
+        { value: Math.sqrt(3), text: "âˆš3" },
+        { value: Math.sqrt(5), text: "âˆš5" },
+        { value: Math.sqrt(6), text: "âˆš6" },
+        { value: Math.sqrt(7), text: "âˆš7" },
+        { value: Math.sqrt(8), text: "2âˆš2" },
+        { value: Math.sqrt(12), text: "2âˆš3" },
+        { value: Math.sqrt(18), text: "3âˆš2" },
+        { value: Math.sqrt(27), text: "3âˆš3" },
+        { value: Math.sqrt(2)/2, text: "âˆš2/2" },
+        { value: Math.sqrt(3)/2, text: "âˆš3/2" },
+        { value: Math.sqrt(3)/3, text: "âˆš3/3" },
+        { value: -Math.sqrt(2), text: "-âˆš2" },
+        { value: -Math.sqrt(3), text: "-âˆš3" },
+        { value: -Math.sqrt(2)/2, text: "-âˆš2/2" },
+        { value: -Math.sqrt(3)/2, text: "-âˆš3/2" },
+        { value: -Math.sqrt(3)/3, text: "-âˆš3/3" }
+    ];
+
+    // Verificar raÃ­ces
+    for (let sv of sqrtValues) {
+        if (Math.abs(num - sv.value) < 1e-8) {
+            return sv.text;
+        }
+    }
+
+    // Fracciones comunes
+    const fractions = [
+        { value: 1/2, text: "1/2" },
+        { value: 1/3, text: "1/3" },
+        { value: 2/3, text: "2/3" },
+        { value: 1/4, text: "1/4" },
+        { value: 3/4, text: "3/4" },
+        { value: 1/6, text: "1/6" },
+        { value: 5/6, text: "5/6" },
+        { value: 1/8, text: "1/8" },
+        { value: 3/8, text: "3/8" },
+        { value: 5/8, text: "5/8" },
+        { value: 7/8, text: "7/8" },
+        { value: -1/2, text: "-1/2" },
+        { value: -1/3, text: "-1/3" },
+        { value: -2/3, text: "-2/3" },
+        { value: -1/4, text: "-1/4" },
+        { value: -3/4, text: "-3/4" }
+    ];
+
+    // Verificar fracciones
+    for (let frac of fractions) {
+        if (Math.abs(num - frac.value) < 1e-8) {
+            return frac.text;
+        }
+    }
+
+    // Enteros
+    if (Math.abs(num - Math.round(num)) < 1e-8) {
+        return Math.round(num).toString();
+    }
+
+    // Decimal con precisiÃ³n limitada
+    return parseFloat(num.toFixed(6)).toString();
+}
+
+// ============================================================================
+// FUNCIONES MATEMÃTICAS AUXILIARES
+// ============================================================================
+
+/**
+ * Normaliza un Ã¡ngulo al rango (-Ï€, Ï€]
+ * @param {number} angle - Ãngulo en radianes
+ * @returns {number} - Ãngulo normalizado
+ */
+function normalizeAngle(angle) {
+    while (angle > Math.PI) angle -= 2 * Math.PI;
+    while (angle <= -Math.PI) angle += 2 * Math.PI;
+    return angle;
+}
+
+// ============================================================================
+// FUNCIONES DE ACTUALIZACIÃ“N
+// ============================================================================
+
+/**
+ * Actualiza todas las formas cuando se modifica la forma cartesiana
+ */
+function updateFromCartesian() {
+    if (isUpdating) return;
+    isUpdating = true;
+
+    // Obtener valores de los campos
+    const real = parseNumber(document.getElementById('real').value) || 0;
+    const imag = parseNumber(document.getElementById('imag').value) || 0;
+
+    // Calcular mÃ³dulo y argumento
+    const modulus = Math.sqrt(real * real + imag * imag);
+    let angle = Math.atan2(imag, real);
+    angle = normalizeAngle(angle);
+
+    // Actualizar forma polar
+    const modulusFormatted = formatNumber(modulus);
+    const angleFormatted = angleToPI(angle);
+    
+    document.getElementById('modulus').value = modulusFormatted;
+    document.getElementById('angle').value = angleFormatted;
+    document.getElementById('angle2').value = angleFormatted;
+
+    // Actualizar forma exponencial
+    document.getElementById('exp-modulus').value = modulusFormatted;
+    document.getElementById('exp-angle').value = angleFormatted;
+
+    // Actualizar resultados mostrados
+    updateResults(real, imag, modulus, angle);
+
+    isUpdating = false;
+}
+
+/**
+ * Actualiza todas las formas cuando se modifica la forma polar
+ */
+function updateFromPolar() {
+    if (isUpdating) return;
+    isUpdating = true;
+
+    // Obtener valores de los campos
+    const modulus = parseNumber(document.getElementById('modulus').value) || 0;
+    const angle = parseAngle(document.getElementById('angle').value) || 0;
+    const normalizedAngle = normalizeAngle(angle);
+
+    // Sincronizar segundo campo de Ã¡ngulo
+    const angleFormatted = angleToPI(normalizedAngle);
+    document.getElementById('angle2').value = angleFormatted;
+
+    // Calcular coordenadas cartesianas
+    const real = modulus * Math.cos(normalizedAngle);
+    const imag = modulus * Math.sin(normalizedAngle);
+
+    // Actualizar forma cartesiana
+    document.getElementById('real').value = formatNumber(real);
+    document.getElementById('imag').value = formatNumber(imag);
+
+    // Actualizar forma exponencial
+    document.getElementById('exp-modulus').value = formatNumber(modulus);
+    document.getElementById('exp-angle').value = angleFormatted;
+
+    // Actualizar resultados mostrados
+    updateResults(real, imag, modulus, normalizedAngle);
+
+    isUpdating = false;
+}
+
+/**
+ * Actualiza todas las formas cuando se modifica la forma exponencial
+ */
+function updateFromExponential() {
+    if (isUpdating) return;
+    isUpdating = true;
+
+    // Obtener valores de los campos
+    const modulus = parseNumber(document.getElementById('exp-modulus').value) || 0;
+    const angle = parseAngle(document.getElementById('exp-angle').value) || 0;
+    const normalizedAngle = normalizeAngle(angle);
+
+    // Calcular coordenadas cartesianas
+    const real = modulus * Math.cos(normalizedAngle);
+    const imag = modulus * Math.sin(normalizedAngle);
+
+    // Actualizar forma cartesiana
+    document.getElementById('real').value = formatNumber(real);
+    document.getElementById('imag').value = formatNumber(imag);
+
+    // Actualizar forma polar
+    const angleFormatted = angleToPI(normalizedAngle);
+    document.getElementById('modulus').value = formatNumber(modulus);
+    document.getElementById('angle').value = angleFormatted;
+    document.getElementById('angle2').value = angleFormatted;
+
+    // Actualizar resultados mostrados
+    updateResults(real, imag, modulus, normalizedAngle);
+
+    isUpdating = false;
+}
+
+/**
+ * Actualiza los resultados mostrados en todas las secciones
+ * @param {number} real - Parte real
+ * @param {number} imag - Parte imaginaria  
+ * @param {number} modulus - MÃ³dulo
+ * @param {number} angle - Argumento en radianes
+ */
+function updateResults(real, imag, modulus, angle) {
+    const angleText = angleToPI(angle);
+    
+    // Resultado cartesiano
+    let cartesianText = "";
+    if (real !== 0 || imag !== 0) {
+        if (real !== 0) {
+            cartesianText += formatNumber(real);
+        }
+        if (imag > 0) {
+            cartesianText += (real !== 0 ? " + " : "");
+            if (imag === 1) {
+                cartesianText += "i";
+            } else {
+                cartesianText += formatNumber(imag) + "i";
+            }
+        } else if (imag < 0) {
+            cartesianText += " - ";
+            if (imag === -1) {
+                cartesianText += "i";
+            } else {
+                cartesianText += formatNumber(-imag) + "i";
+            }
+        }
+        if (cartesianText === "") cartesianText = "0";
+    } else {
+        cartesianText = "0";
+    }
+    document.getElementById('cartesian-result').textContent = "z = " + cartesianText;
+
+    // Resultado polar
+    let polarText = "";
+    if (modulus !== 0) {
+        polarText = formatNumber(modulus) + "(cos(" + angleText + ") + i sin(" + angleText + "))";
+    } else {
+        polarText = "0";
+    }
+    document.getElementById('polar-result').textContent = "z = " + polarText;
+
+    // Resultado exponencial
+    let expText = "";
+    if (modulus !== 0) {
+        expText = formatNumber(modulus) + "e^(i*" + angleText + ")";
+    } else {
+        expText = "0";
+    }
+    document.getElementById('exponential-result').textContent = "z = " + expText;
+}
+
+// ============================================================================
+// FUNCIONES AUXILIARES
+// ============================================================================
+
+/**
+ * Limpia todos los campos de entrada y resultados
+ */
+function clearAll() {
+    // Limpiar todos los campos de entrada
+    const inputs = document.querySelectorAll('input[type="text"], input[type="number"]');
+    inputs.forEach(input => input.value = '');
+    
+    // Limpiar todos los resultados
+    const results = document.querySelectorAll('.result');
+    results.forEach(result => result.textContent = 'Ingresa los valores arriba');
+}
+
+// ============================================================================
+// INICIALIZACIÃ“N Y EVENT LISTENERS
+// ============================================================================
+
+/**
+ * Configura los event listeners cuando el DOM estÃ¡ listo
+ */
+document.addEventListener('DOMContentLoaded', function() {
+    // Event listeners para forma cartesiana
+    document.getElementById('real').addEventListener('input', updateFromCartesian);
+    document.getElementById('imag').addEventListener('input', updateFromCartesian);
+
+    // Event listeners para forma polar
+    document.getElementById('modulus').addEventListener('input', updateFromPolar);
+    document.getElementById('angle').addEventListener('input', function() {
+        document.getElementById('angle2').value = this.value;
+        updateFromPolar();
+    });
+
+    // Event listeners para forma exponencial
+    document.getElementById('exp-modulus').addEventListener('input', updateFromExponential);
+    document.getElementById('exp-angle').addEventListener('input', updateFromExponential);
+});
+</script>
+</body> 
+</html>
