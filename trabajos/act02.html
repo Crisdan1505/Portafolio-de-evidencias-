@@ -1,8 +1,8 @@
 <!DOCTYPE html> 
 <html lang="es"> 
 <head>
-<style> 
-/* ==================== RESET BÁSICO Y TIPOGRAFÍA ==================== */ 
+<style>
+/* ==================== RESET BÁSICO Y TIPOGRAFÍA ==================== */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
 * { 
@@ -10,204 +10,206 @@
     padding: 0; 
     box-sizing: border-box; 
 } 
- 
+
 body { 
     font-family: 'Poppins', sans-serif; 
     line-height: 1.6; 
-    background-color: #f4f4f4; /* Gris claro */
-    color: #333; /* Gris oscuro para mejor contraste */
+    background-color: #1a0b2b; /* Fondo morado oscuro tipo noche */
+    color: #f0e6f6; /* Texto lila claro */
     padding: 10px; 
 } 
- 
+
 .container { 
     max-width: 1200px; 
     margin: 0 auto; 
-    border: 2px solid #ccc; 
-    padding: 20px; 
-    background-color: white; /* Fondo blanco dentro del contenedor */
-    border-radius: 8px; /* Bordes redondeados opcionales */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    border: 2px solid #6b1fa0; 
+    padding: 25px; 
+    background-color: #2b0f3f; /* Fondo morado medio */
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(107,31,160,0.5);
 }
-/* ==================== ENCABEZADOS ==================== */ 
+
+/* ==================== ENCABEZADOS ==================== */
 h1 { 
-    font-size: 32px; 
-    margin-bottom: 20px; 
-    color: #2c3e50; /* Azul oscuro elegante */
+    font-size: 36px; 
+    margin-bottom: 25px; 
+    color: #e37b1f; /* Naranja Halloween */
     text-align: center; 
     font-weight: 600;
 } 
- 
+
 h2 { 
-    font-size: 24px; 
-    margin-bottom: 15px; 
-    color: #34495e; 
+    font-size: 26px; 
+    margin-bottom: 18px; 
+    color: #d891ff; /* Lila brillante */
     font-weight: 500;
 } 
- 
+
 h3 { 
     font-size: 20px; 
-    margin-bottom: 10px; 
-    color: #555; 
+    margin-bottom: 12px; 
+    color: #f0c674; /* Amarillo naranja tenue */
     font-weight: 500;
 } 
- 
+
 p { 
     font-size: 16px; 
     margin: 10px 0; 
     text-align: justify; 
-    color: #333;
-    line-height: 1.6;
+    color: #f0e6f6;
 }
+
+/* ==================== CONTROLES ==================== */
 .controls { 
-    border: 2px solid black; 
-    padding: 20px; 
-    margin-bottom: 20px; 
-} 
+    border: 2px solid #6b1fa0; 
+    padding: 22px; 
+    margin-bottom: 25px; 
+    border-radius: 10px;
+    background: linear-gradient(145deg, #2b0f3f, #3a0d51);
+    box-shadow: 0 4px 15px rgba(107,31,160,0.4);
+}
 
 .input-group { 
-    margin-bottom: 20px; 
+    margin-bottom: 22px; 
 } 
 
 .input-group label { 
     display: block; 
-    font-weight: bold; 
-    margin-bottom: 5px; 
-    color: black; 
+    font-weight: 600; 
+    margin-bottom: 6px; 
+    color: #ff9f1c; /* Naranja llamativo */
 } 
 
 .input-group input { 
-    width: 300px; 
-    padding: 8px; 
-    border: 2px solid black; 
+    width: 100%; 
+    max-width: 320px;
+    padding: 10px; 
+    border: 2px solid #6b1fa0; 
     font-size: 14px; 
-    margin-bottom: 10px; 
+    border-radius: 6px;
+    background-color: #3a0d51;
+    color: #f0e6f6;
+    transition: all 0.3s ease;
 } 
 
 .input-group input:focus { 
     outline: none; 
-    border-color: blue; 
+    border-color: #ff7518; 
+    box-shadow: 0 0 10px rgba(255,117,24,0.6);
 }
 
-/* ==================== BOTONES ==================== */ 
+/* ==================== BOTONES ==================== */
 button { 
-    padding: 12px 24px; 
+    padding: 12px 26px; 
     font-size: 15px; 
     font-family: 'Poppins', sans-serif;
     font-weight: 600; 
     border: none; 
     border-radius: 8px; 
-    background-color: #8e44ad; /* Morado principal */
+    background: linear-gradient(135deg, #6b1fa0, #9b2ed0); 
     color: white; 
     cursor: pointer; 
     margin-right: 10px; 
     margin-bottom: 10px; 
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
 } 
- 
+
 button:hover { 
-    background-color: #732d91; /* Morado más oscuro */
+    background: linear-gradient(135deg, #9b2ed0, #e37b1f);
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.4);
 } 
 
 button:active {
     transform: translateY(0);
-    background-color: #5e2474;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    background: linear-gradient(135deg, #ff7518, #6b1fa0);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
-/* ==================== NÚMEROS PREDEFINIDOS ==================== */ 
-.preset-section { 
-    margin-top: 20px; 
-} 
- 
+/* ==================== NÚMEROS PREDEFINIDOS ==================== */
+.preset-section { margin-top: 22px; } 
+
 .preset-section h3 { 
     font-size: 16px; 
     margin-bottom: 10px; 
-    color: black; 
+    color: #ff9f1c; 
 } 
- 
+
 .preset-section p { 
     margin-bottom: 15px; 
-    color: black; 
     font-size: 14px; 
-    text-align: left; 
+    color: #f0e6f6; 
 } 
- 
+
 .preset-numbers { 
     display: flex; 
-
-flex-wrap: wrap; 
-gap: 5px; 
-margin-top: 15px; 
+    flex-wrap: wrap; 
+    gap: 6px; 
 } 
+
 .preset-btn { 
-padding: 5px 10px; 
-border: 2px solid black; 
-background-color: white; 
-cursor: pointer; 
-font-size: 12px; 
-font-weight: bold; 
-} 
-.preset-btn:hover { 
-background-color: black; 
-color: white; 
+    padding: 6px 12px; 
+    border: 2px solid #6b1fa0; 
+    background-color: #2b0f3f; 
+    cursor: pointer; 
+    font-size: 13px; 
+    font-weight: bold; 
+    border-radius: 6px;
+    color: #f0e6f6;
+    transition: all 0.25s ease;
 } 
 
-/* ==================== RECTA NUMÉRICA ==================== */ 
+.preset-btn:hover { 
+    background-color: #e37b1f; 
+    color: #2b0f3f; 
+}
+
+/* ==================== RECTA NUMÉRICA ==================== */
 .number-line-container { 
-    border: 2px solid black; 
-    padding: 20px; 
-    margin-bottom: 20px; 
+    border: 2px solid #6b1fa0; 
+    padding: 22px; 
+    margin-bottom: 25px; 
+    border-radius: 10px;
+    background-color: #2b0f3f;
 } 
- 
+
 .number-line-container h2 { 
     font-size: 18px; 
     margin-bottom: 15px; 
     text-align: center; 
-    color: black; 
+    color: #ff7518; 
 } 
- 
+
 .number-line { 
     width: 100%; 
     height: 100px; 
     position: relative; 
-    background-color: white; 
-    border: 1px solid black; 
+    background-color: #3a0d51; 
+    border-radius: 6px;
+    border: 1px solid #6b1fa0; 
     margin: 20px 0; 
-} 
- 
-.range-info { 
-    text-align: center; 
-    margin-top: 10px; 
-} 
- 
-.range-info small { 
-    color: black; 
-    font-size: 12px; 
-} 
-/* ==================== ELEMENTOS DE LA RECTA - Estilo Moderno ==================== */
+}
 
+/* ==================== ELEMENTOS DE LA RECTA ==================== */
 .line {
     position: absolute;
-    top: 50px;
+    top: 50%;
     left: 5%;
     right: 5%;
     height: 6px;
-    background: linear-gradient(90deg, #4a90e2, #50e3c2);
+    background: linear-gradient(90deg, #9b2ed0, #ff7518);
     border-radius: 3px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .tick {
     position: absolute;
     width: 3px;
     height: 24px;
-    background-color: #4a90e2;
-    top: 42px;
+    background-color: #ff7518;
+    top: 50%;
+    transform: translateY(-50%);
     border-radius: 1px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 }
 
 .tick-label {
@@ -215,89 +217,70 @@ color: white;
     top: 70px;
     font-size: 13px;
     font-weight: 600;
-    color: #333;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #f0e6f6;
     transform: translateX(-50%);
-    user-select: none;
-    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
 }
 
-/* ==================== PUNTOS EN LA RECTA - Estilo Moderno ==================== */
-
+/* ==================== PUNTOS EN LA RECTA ==================== */
 .number-point {
     position: absolute;
     width: 18px;
     height: 18px;
-    top: 40px;
-    transform: translateX(-50%);
-    border: 2.5px solid #333;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 2.5px solid #fff;
     border-radius: 50%;
     cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .number-point:hover {
-    transform: translateX(-50%) scale(1.2);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transform: translate(-50%, -50%) scale(1.3);
+    box-shadow: 0 4px 12px rgba(255,117,24,0.7);
 }
 
-.number-point.naturals {
-    background-color: #e74c3c; /* rojo vibrante */
-}
-
-.number-point.integers {
-    background-color: #3498db; /* azul moderno */
-}
-
-.number-point.rationals {
-    background-color: #27ae60; /* verde fresco */
-}
-
-.number-point.irrationals {
-    background-color: #f1c40f; /* amarillo dorado */
-}
+.number-point.naturals { background-color: #ff7518; } /* Naranja */
+.number-point.integers { background-color: #9b2ed0; } /* Morado */
+.number-point.rationals { background-color: #d891ff; } /* Lila */
+.number-point.irrationals { background-color: #f1c40f; } /* Amarillo tenue */
 
 .point-label {
     position: absolute;
     top: -30px;
     transform: translateX(-50%);
-    background-color: #fff;
-    border: 1px solid #ccc;
+    background-color: #3a0d51;
+    border: 1px solid #ff7518;
     border-radius: 4px;
     padding: 3px 6px;
     font-size: 11px;
     font-weight: 600;
-    white-space: nowrap;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    pointer-events: none;
-    user-select: none;
+    color: #f0e6f6;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.4);
 }
 
-/* =================== PANELES DE INFORMACIÓN - Estilo Verde Azulado =================== */
-
+/* ==================== INFO PANELS ==================== */
 .info-panels {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 24px;
-    padding: 10px;
+    padding: 10px 0;
 }
 
 .classification-panel,
 .points-panel,
 .distance-calculator {
-    background-color: #fff;
-    border: 1.8px solid #3ba99c;  /* verde azulado */
-    border-radius: 10px;
-    padding: 20px 25px;
-    box-shadow: 0 4px 10px rgba(59, 169, 156, 0.15);
+    background-color: #2b0f3f;
+    border: 1.8px solid #ff7518;
+    border-radius: 12px;
+    padding: 22px;
+    box-shadow: 0 6px 14px rgba(255,117,24,0.3);
     transition: box-shadow 0.3s ease;
 }
 
 .classification-panel:hover,
 .points-panel:hover,
 .distance-calculator:hover {
-    box-shadow: 0 8px 20px rgba(59, 169, 156, 0.3);
+    box-shadow: 0 10px 28px rgba(255,117,24,0.5);
 }
 
 .classification-panel h3,
@@ -305,243 +288,20 @@ color: white;
 .distance-calculator h3 {
     font-size: 18px;
     margin-bottom: 18px;
-    color: #2a6f68; /* tono más oscuro del verde azulado */
-    border-bottom: 3px solid #3ba99c;
+    color: #ff7518;
+    border-bottom: 3px solid #9b2ed0;
     padding-bottom: 6px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 700;
 }
 
-/* ================== LEYENDA DE CLASIFICACIÓN - Estilo Moderno ================== */
-
-.classification-legend {
-    margin-bottom: 25px;
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px) {
+    .container { margin: 5px; }
+    .input-group input { width: 100%; max-width: 100%; }
+    .info-panels { grid-template-columns: 1fr; }
 }
-
-.legend-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin: 12px 0;
-    padding: 6px 8px;
-    border-radius: 8px;
-    background-color: #f7f9fa;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-    transition: background-color 0.3s ease;
-}
-
-.legend-item:hover {
-    background-color: #e1f0f7;
-}
-
-.legend-color {
-    width: 22px;
-    height: 22px;
-    border-radius: 5px;
-    border: 2px solid #444;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-}
-
-.legend-color.naturals {
-    background-color: #e74c3c; /* rojo suave */
-}
-
-.legend-color.integers {
-    background-color: #3498db; /* azul moderno */
-}
-
-.legend-color.rationals {
-    background-color: #27ae60; /* verde fresco */
-}
-
-.legend-color.irrationals {
-    background-color: #f1c40f; /* amarillo dorado */
-}
-
-.classification-info h4 {
-    font-size: 15px;
-    margin: 18px 0 12px 0;
-    color: #222;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: 600;
-}
-
-.classification-info ul {
-    margin-left: 22px;
-    list-style-type: disc;
-}
-
-.classification-info li {
-    margin: 6px 0;
-    font-size: 13px;
-    color: #555;
-}
- 
-/* ==================== LISTA DE PUNTOS - Estilo Moderno ==================== */
-
-.points-list {
-    min-height: 200px;
-    background-color: #fafafa;
-    border-radius: 10px;
-    padding: 15px 20px;
-    box-shadow: inset 0 0 8px rgba(0,0,0,0.05);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.empty-state p {
-    font-size: 15px;
-    color: #666;
-    text-align: center;
-    margin: 30px 0 10px 0;
-    font-style: italic;
-}
-
-.empty-state small {
-    display: block;
-    text-align: center;
-    font-size: 13px;
-    color: #999;
-}
-
-.point-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 15px;
-    margin: 7px 0;
-    border: 1.5px solid #ccc;
-    border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.07);
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-}
-
-.point-item:hover {
-    background-color: #e8f0fe;
-    border-color: #5a9bf6;
-}
-
-/* ================== CALCULADORA DE DISTANCIAS - Estilo Naranja Cálido ================== */
-
-.calculator-description {
-    margin-bottom: 18px;
-    font-size: 14px;
-    color: #5a3e1b;
-    text-align: left;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.distance-inputs {
-    margin-bottom: 22px;
-}
-
-.distance-field {
-    margin-bottom: 18px;
-}
-
-.distance-field label {
-    display: block;
-    font-weight: 600;
-    margin-bottom: 6px;
-    color: #7a532c;
-}
-
-.custom-select {
-    position: relative;
-    width: 100%;
-}
-
-.select-selected {
-    padding: 10px 35px 10px 12px;
-    border: 1.8px solid #d2691e;
-    background-color: #fff8f0;
-    cursor: pointer;
-    font-size: 15px;
-    border-radius: 8px;
-    position: relative;
-    user-select: none;
-    transition: border-color 0.3s ease;
-}
-
-.select-selected:after {
-    content: "▼";
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 12px;
-    color: #d2691e;
-    pointer-events: none;
-}
-
-.select-selected:hover,
-.select-selected.active {
-    border-color: #ff7f50;
-    box-shadow: 0 0 8px rgba(255, 127, 80, 0.4);
-}
-
-.select-items {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background-color: #fff8f0;
-    border: 1.8px solid #d2691e;
-    border-top: none;
-    z-index: 1000;
-    max-height: 160px;
-    overflow-y: auto;
-    border-radius: 0 0 8px 8px;
-    display: none;
-    box-shadow: 0 4px 12px rgba(210, 105, 30, 0.15);
-}
-
-.select-items.show {
-    display: block;
-}
-
-.select-items div {
-    padding: 10px 12px;
-    cursor: pointer;
-    border-bottom: 1px solid #f0d6bf;
-    font-size: 14px;
-    color: #7a532c;
-    transition: background-color 0.25s ease;
-}
-
-.select-items div:hover {
-    background-color: #ff7f50;
-    color: #fff;
-}
-
-.distance-btn {
-    width: 100%;
-    padding: 14px;
-    background-color: #ff7f50;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-/* ==================== RESPONSIVE ==================== */ 
- @media (max-width: 768px) { 
-    .container { 
-        margin: 5px; 
-    } 
-     
-    .input-group input { 
-        width: 100%; 
-max-width: 300px; 
-} 
-.info-panels { 
-grid-template-columns: 1fr; 
-} 
-} 
-
 </style>
+
 </head>
 
 <body> 

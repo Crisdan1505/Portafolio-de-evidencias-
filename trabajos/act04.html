@@ -5,139 +5,139 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 <title>Calculadora de Conversiones - Números Complejos</title> 
 </head>
-<style> 
+<style>
 /* ==================== CAMPOS DE ENTRADA ==================== */ 
 input[type="text"] { 
-    width: 120px; /* un poco más ancho */
+    width: 120px;
     padding: 10px 14px; 
-    border: 2px solid #95a5a6; /* borde más visible y gris suave */
-    border-radius: 8px; /* bordes más redondeados */
+    border: 2px solid #6b1fa0; /* borde morado oscuro */
+    border-radius: 8px;
     font-size: 15px; 
     text-align: center; 
-    font-family: 'Roboto', sans-serif; /* tipografía moderna */
-    color: #2c3e50; /* color del texto */
-    background-color: #ecf0f1; /* fondo suave */
-    transition: all 0.3s ease; /* transición suave al enfocar */
+    font-family: 'Roboto', sans-serif;
+    color: #f0e6f6; /* lila claro */
+    background-color: #2b0f3f; /* morado medio */
+    transition: all 0.3s ease;
 } 
 
 input[type="text"]:focus { 
     outline: none; 
-    border-color: #e67e22; /* borde naranja al enfocar */
-    box-shadow: 0 0 8px rgba(230, 126, 34, 0.4); /* sombra suave */
-    background-color: #fff; /* cambia fondo a blanco al enfocar */
+    border-color: #ff7518; /* naranja Halloween */
+    box-shadow: 0 0 8px rgba(255,117,24,0.6); 
+    background-color: #3a0d51; 
 } 
- 
+
 /* ==================== RESULTADOS ==================== */ 
 .result { 
-    background-color: #ffffff; /* fondo blanco limpio */
+    background-color: #3a0d51; 
     padding: 18px; 
-    border-radius: 10px; /* bordes más redondeados */
-    border-left: 6px solid #e67e22; /* borde lateral más grueso y naranja */
-    font-family: 'Roboto', sans-serif; /* tipografía moderna */
+    border-radius: 10px;
+    border-left: 6px solid #ff7518; 
+    font-family: 'Roboto', sans-serif;
     font-size: 16px; 
-    color: #34495e; /* texto más suave y elegante */
+    color: #f0e6f6; 
     min-height: 50px; 
     display: flex; 
     align-items: center; 
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* sombra ligera para profundidad */
-    font-weight: 600; /* semi-negrita más estética */
-    transition: all 0.3s ease; /* efecto suave al cambiar estilos */
+    box-shadow: 0 2px 8px rgba(107,31,160,0.3);
+    font-weight: 600;
+    transition: all 0.3s ease;
 } 
 
 .result:hover {
-    border-left-color: #3498db; /* cambia el color del borde al pasar el cursor */
-    background-color: #f0f4f8; /* ligero cambio de fondo al hover */
+    border-left-color: #9b2ed0; 
+    background-color: #2b0f3f; 
 }
- 
+
 /* ==================== BOTÓN LIMPIAR ==================== */ 
 .clear-btn { 
-    background-color: #e67e22; /* naranja moderno */
+    background-color: #9b2ed0; /* morado brillante */
     color: #fff; 
     border: none; 
-    padding: 12px 24px; /* un poco más grande para mejor click */
-    border-radius: 8px; /* bordes más redondeados */
+    padding: 12px 24px;
+    border-radius: 8px;
     cursor: pointer; 
     font-size: 15px; 
     margin-top: 20px; 
     display: block; 
     margin-left: auto; 
     margin-right: auto; 
-    font-family: 'Roboto', sans-serif; /* tipografía uniforme */
+    font-family: 'Roboto', sans-serif;
     font-weight: 600; 
-    transition: all 0.3s ease; /* transición suave al hover */
-    box-shadow: 0 2px 6px rgba(0,0,0,0.15); /* ligera sombra */
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
 }
 
 .clear-btn:hover { 
-    background-color: #d35400; /* naranja más oscuro al hover */
-    transform: translateY(-2px); /* efecto elevación */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2); /* sombra más pronunciada */
+    background-color: #ff7518; 
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255,117,24,0.5);
 }
 
 /* ==================== INSTRUCCIONES ==================== */ 
 .instructions { 
-    background-color: #fdf6e3; /* fondo más claro y cálido */
+    background-color: #2b0f3f; 
     padding: 20px; 
-    border-radius: 10px; /* bordes más redondeados */
+    border-radius: 10px;
     margin-bottom: 25px; 
     font-size: 15px; 
-    color: #34495e; /* texto más elegante */
-    font-family: 'Roboto', sans-serif; /* tipografía uniforme */
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* sombra ligera */
-    line-height: 1.6; /* mejor lectura */
-    transition: all 0.3s ease; 
+    color: #f0e6f6; 
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 0 2px 8px rgba(107,31,160,0.3);
+    line-height: 1.6; 
+    transition: all 0.3s ease;
 }
 
 .instructions ul { 
     margin-left: 25px; 
     margin-top: 10px; 
-    list-style-type: disc; /* estilo de viñetas más clásico */
+    list-style-type: disc;
 }
 
 .instructions li { 
     margin-bottom: 8px; 
 }
- 
+
 /* ==================== SECCIONES DE FORMULARIO ==================== */ 
 .form-section { 
     margin-bottom: 30px; 
-    border: 1px solid #dcdfe6; /* borde más suave */
-    border-radius: 12px; /* bordes más redondeados */
+    border: 1px solid #6b1fa0; 
+    border-radius: 12px; 
     padding: 25px; 
-    background: #ffffff; 
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* sombra ligera para profundidad */
+    background: #2b0f3f; 
+    box-shadow: 0 4px 12px rgba(107,31,160,0.25); 
     transition: all 0.3s ease; 
 }
 
 .form-section:hover {
-    border-color: #e67e22; /* resalta el borde al pasar el cursor */
-    box-shadow: 0 6px 16px rgba(0,0,0,0.1); /* sombra un poco más pronunciada */
+    border-color: #ff7518; 
+    box-shadow: 0 6px 16px rgba(255,117,24,0.5); 
 }
 
 .input-group { 
     display: flex; 
     align-items: center; 
-    gap: 12px; /* un poco más de separación entre elementos */
+    gap: 12px; 
     margin-bottom: 18px; 
 }
 
 .input-group:last-child { 
     margin-bottom: 0; 
 }
- 
+
 /* ==================== ETIQUETAS Y OPERADORES ==================== */ 
 label { 
     min-width: 25px; 
-    font-weight: 600; /* un poco más fuerte para destacar */
-    color: #34495e; /* color elegante y moderno */
+    font-weight: 600; 
+    color: #f0e6f6; 
     font-size: 16px; 
-    font-family: 'Roboto', sans-serif; /* tipografía uniforme */
+    font-family: 'Roboto', sans-serif;
 }
 
 .operator { 
     font-size: 16px; 
-    color: #e67e22; /* color destacado y moderno */
-    margin: 0 8px; /* más espacio lateral para mejor legibilidad */
+    color: #ff7518; 
+    margin: 0 8px; 
     font-weight: 600; 
     font-family: 'Roboto', sans-serif;
 }
@@ -148,53 +148,54 @@ label {
     padding: 0; 
     box-sizing: border-box; 
 } 
- 
+
 /* ==================== ESTRUCTURA GENERAL ==================== */ 
 body { 
-    font-family: 'Roboto', sans-serif; /* tipografía moderna y uniforme */
-    background-color: #f0f4f8; /* color de fondo más suave y moderno */
+    font-family: 'Roboto', sans-serif;
+    background-color: #1a0b2b; 
     padding: 20px; 
     line-height: 1.6; 
-    color: #34495e; /* color de texto principal uniforme */
+    color: #f0e6f6; 
     transition: background 0.3s ease; 
 }
 
 .container { 
     max-width: 800px; 
     margin: 0 auto; 
-    background: #ffffff; 
-    border-radius: 12px; /* bordes más redondeados */
-    box-shadow: 0 6px 20px rgba(0,0,0,0.08); /* sombra más suave y moderna */
+    background: #2b0f3f; 
+    border-radius: 12px; 
+    box-shadow: 0 6px 20px rgba(107,31,160,0.4); 
     padding: 35px; 
     transition: all 0.3s ease; 
 }
 
 .container:hover {
-    box-shadow: 0 8px 25px rgba(0,0,0,0.12); /* sombra un poco más marcada al hover */
+    box-shadow: 0 8px 25px rgba(255,117,24,0.5); 
 }
- 
+
 /* ==================== ENCABEZADOS ==================== */ 
 h1 { 
     text-align: center; 
-    color: #e67e22; /* color moderno y llamativo */
+    color: #ff7518; 
     margin-bottom: 30px; 
-    font-weight: 600; /* más visible */
-    font-size: 32px; /* un poco más grande */
-    font-family: 'Roboto', sans-serif; /* tipografía uniforme */
-    text-transform: uppercase; /* opcional: mayúsculas para estilo moderno */
-    letter-spacing: 1px; /* mejora la legibilidad */
+    font-weight: 600; 
+    font-size: 32px; 
+    font-family: 'Roboto', sans-serif; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
 }
 
 h2 { 
-    color: #34495e; /* color elegante y moderno */
+    color: #f0e6f6; 
     margin-bottom: 18px; 
-    font-size: 20px; /* ligeramente más grande */
+    font-size: 20px; 
     font-weight: 500; 
-    font-family: 'Roboto', sans-serif; /* tipografía uniforme */
-    border-bottom: 2px solid #e67e22; /* línea decorativa moderna */
+    font-family: 'Roboto', sans-serif; 
+    border-bottom: 2px solid #ff7518; 
     padding-bottom: 5px; 
 }
-</style> 
+</style>
+
 <body> 
 <!-- Forma Cartesiana --> 
 <div class="form-section"> 

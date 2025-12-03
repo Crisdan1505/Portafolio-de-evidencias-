@@ -5,9 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>División sintética</title>
 <style>
+/* ==================== VARIABLES HALLOWEEN ==================== */
+:root {
+    --morado-oscuro: #2b002b;
+    --morado-claro: #690069;
+    --naranja: #ff7518;
+    --blanco: #fff7fa;
+    --negro: #000000;
+    --gris-claro: #5e4b7a;
+    --sombra: rgba(255, 117, 24, 0.3);
+}
 
-    /* Reinicio básico */
-
+/* Reset básico */
 * {
     margin: 0;
     padding: 0;
@@ -22,40 +31,40 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    color: var(--blanco);
 }
 
 /* Contenedor principal */
 .container {
-    background: rgb(57, 156, 133);
-    border-radius: 12px;
+    background: linear-gradient(145deg, #4a004a, #2b002b);
+    border-radius: 16px;
     padding: 50px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 20px var(--sombra);
     max-width: 800px;
     width: 100%;
-    transition: transform 0.3s ease;
-    
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 
 .container:hover {
     transform: scale(1.02);
+    box-shadow: 0 6px 25px var(--sombra);
 }
 
 /* Título principal */
 h1 {
-    color: #2e003e;
+    color: var(--naranja);
     text-align: center;
     margin-bottom: 15px;
-    font-size: 2.2em;
+    font-size: 2.4em;
     font-weight: 700;
-    font-style: italic; /* 👈 cursiva elegante */
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    font-style: italic;
+    text-shadow: 2px 2px 6px #4a004a;
 }
 
 /* Subtítulo */
 .subtitle {
     text-align: center;
-    color: #4a4a4a;
+    color: #d6a7e6;
     margin-bottom: 35px;
     font-size: 1em;
     font-style: italic;
@@ -71,15 +80,15 @@ h1 {
 label {
     display: block;
     margin-bottom: 8px;
-    color: #29002a;
+    color: #e0b0e6;
     font-weight: 600;
-    font-style: italic; /* 👈 toque cursivo */
+    font-style: italic;
 }
 
 /* Texto de ayuda */
 .help-text {
     font-size: 0.9em;
-    color: #555;
+    color: #c7a3d6;
     margin-top: 5px;
     font-style: italic;
 }
@@ -89,49 +98,54 @@ input[type="text"] {
     width: 100%;
     padding: 12px;
     border: 2px solid #a64ca6;
-    border-radius: 6px;
+    border-radius: 8px;
     font-size: 1em;
     transition: 0.3s;
-    background-color: #fffafc;
+    background-color: #fff0ff;
+    color: var(--morado-oscuro);
 }
 
 input[type="text"]:focus {
     outline: none;
-    border-color: #4a004a;
+    border-color: var(--naranja);
     background: #fff2ff;
+    box-shadow: 0 0 8px var(--naranja);
 }
 
 /* Botón */
 button {
     width: 100%;
     padding: 15px;
-    background: linear-gradient(135deg, #690f63, #45063e);
-    color: white;
+    background: linear-gradient(135deg, var(--morado-claro), var(--morado-oscuro));
+    color: var(--naranja);
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     font-size: 1.1em;
     font-weight: 600;
     cursor: pointer;
     letter-spacing: 0.5px;
     transition: all 0.3s ease;
     font-style: italic;
+    box-shadow: 0 4px 8px var(--sombra);
 }
 
 button:hover {
     background: linear-gradient(135deg, #7a1573, #5a0a4e);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 15px var(--naranja);
+    transform: translateY(-2px);
 }
 
 /* Resultados */
 .result-section {
     margin-top: 30px;
     padding: 25px;
-    background: #fff7fa;
-    border-radius: 8px;
-    border: 1px solid #e0b0d0;
+    background: var(--blanco);
+    border-radius: 10px;
+    border: 1px solid #d6a7e6;
     display: none;
     font-style: italic;
-    color: #2d002f;
+    color: var(--morado-oscuro);
+    box-shadow: 0 4px 10px var(--sombra);
 }
 
 .result-section.show {
@@ -140,7 +154,7 @@ button:hover {
 
 /* Título del resultado */
 .result-title {
-    color: #4a004a;
+    color: var(--morado-claro);
     font-weight: 700;
     margin-bottom: 15px;
     font-size: 1.2em;
@@ -152,8 +166,8 @@ button:hover {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
-    background: white;
-    border-radius: 6px;
+    background: #fff0ff;
+    border-radius: 8px;
     overflow: hidden;
     border: 1px solid #d9b2e6;
     font-style: italic;
@@ -166,8 +180,8 @@ button:hover {
 }
 
 .process-table tr:first-child td {
-    background: #4a004a;
-    color: white;
+    background: var(--morado-claro);
+    color: var(--naranja);
     font-weight: 600;
 }
 
@@ -175,7 +189,7 @@ button:hover {
 .final-result {
     background: #f7e6ff;
     padding: 15px;
-    border-radius: 6px;
+    border-radius: 8px;
     margin-top: 15px;
     border: 1px solid #d6a7e6;
     font-style: italic;
@@ -187,7 +201,7 @@ button:hover {
     background: #ffe6eb;
     color: #b00020;
     padding: 15px;
-    border-radius: 6px;
+    border-radius: 8px;
     margin-top: 15px;
     border: 1px solid #ffcdd2;
     font-style: italic;
@@ -195,16 +209,22 @@ button:hover {
 
 /* Ejemplo */
 .example {
-    background: #faf5ff;
+    background: #faf0ff;
     padding: 12px;
-    border-radius: 6px;
+    border-radius: 8px;
     margin-top: 12px;
     font-size: 0.9em;
     border: 1px solid #e0b0e6;
     font-style: italic;
 }
 
+/* Animaciones suaves */
+.container, .result-section, button {
+    transition: all 0.3s ease;
+}
+
 </style>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.0/math.min.js"></script>
 </head>
 <body>
