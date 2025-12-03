@@ -2,30 +2,134 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portafolio de Evidencias</title>
-    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f6fa;
+            color: #333;
+        }
+
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.4em;
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin-top: 8px;
+            opacity: 0.8;
+        }
+
+        .contenedor {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+        .grid {
+            display: grid;
+            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            border-left: 6px solid #3498db;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 6px 15px rgba(0,0,0,0.15);
+        }
+
+        .card h3 {
+            margin: 0 0 10px;
+            color: #2980b9;
+        }
+
+        .card a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 18px;
+            margin-top: 40px;
+        }
+    </style>
 </head>
+
 <body>
+
     <header>
         <h1>Portafolio de Evidencias</h1>
-        <p>Curso de Desarrollo Web – HTML, CSS y JavaScript</p>
+        <p>HTML • CSS • JavaScript — Actividades del curso</p>
     </header>
 
-    <section class="menu">
-        <h2>Actividades</h2>
-        <ul>
-            <li><a href="actividades/actividad02/index.html">Actividad 2 – Números Complejos</a></li>
-            <li><a href="actividades/actividad04/index.html">Actividad 4 – Forma Polar a Exponencial</a></li>
-            <li><a href="actividades/actividad06/index.html">Actividad 6 – Expresiones Algebraicas</a></li>
-            <li><a href="actividades/actividad08/index.html">Actividad 8 – Calculadora Operaciones</a></li>
-            <li><a href="actividades/actividad10/index.html">Actividad 10 – Productos Notables</a></li>
-            <li><a href="actividades/actividad12/index.html">Actividad 12 – Factorización</a></li>
-            <li><a href="actividades/actividad14/index.html">Actividad 14 – Ecuaciones de 1er Grado</a></li>
-        </ul>
-    </section>
+    <div class="contenedor">
+        <div class="grid">
+
+            <div class="card">
+                <h3>Actividad 02</h3>
+                <a href="actividades/actividad02/index.html" target="_blank">Ver actividad →</a>
+            </div>
+
+            <div class="card">
+                <h3>Actividad 04</h3>
+                <a href="actividades/actividad04/index.html" target="_blank">Ver actividad →</a>
+            </div>
+
+            <div class="card">
+                <h3>Actividad 06</h3>
+                <a href="actividades/actividad06/index.html" target="_blank">Ver actividad →</a>
+            </div>
+
+            <div class="card">
+                <h3>Actividad 08</h3>
+                <a href="actividades/actividad08/index.html" target="_blank">Ver actividad →</a>
+            </div>
+
+            <div class="card">
+                <h3>Actividad 10</h3>
+                <a href="actividades/actividad10/index.html" target="_blank">Ver actividad →</a>
+            </div>
+
+            <div class="card">
+                <h3>Actividad 12</h3>
+                <a href="actividades/actividad12/index.html" target="_blank">Ver actividad →</a>
+            </div>
+
+            <div class="card">
+                <h3>Actividad 14</h3>
+                <a href="actividades/actividad14/index.html" target="_blank">Ver actividad →</a>
+            </div>
+
+        </div>
+    </div>
 
     <footer>
-        <p>© 2025 - Portafolio de Evidencias | Cris Euan</p>
+        © 2024 - Portafolio creado por Cris — Desarrollo Web
     </footer>
+
 </body>
 </html>
