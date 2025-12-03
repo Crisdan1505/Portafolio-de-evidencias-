@@ -7,136 +7,155 @@
 
     <style>
         body {
-            font-family: Arial, Helvetica, sans-serif;
             margin: 0;
             padding: 0;
-            background: #121212; /* Fondo dark */
-            color: #e5e5e5;      /* Texto claro */
-        }
-
-        header {
-            background: #1f1f1f;
+            background: #0f0f11;
             color: #ffffff;
-            padding: 30px 20px;
+            font-family: "Cinzel", serif;
+        }
+
+        .side-line {
+            position: fixed;
+            top: 0;
+            left: 50px;
+            width: 3px;
+            height: 100vh;
+            background: #b36bff;
+            box-shadow: 0 0 15px #b36bff;
+        }
+
+        .container {
             text-align: center;
-            border-bottom: 2px solid #7e06cf;
+            padding: 80px 20px;
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 2.4em;
+        h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: #e6d2ff;
+            text-shadow: 0 0 10px #9b5bff;
         }
 
-        header p {
-            font-size: 1.2em;
-            margin-top: 8px;
-            opacity: 0.8;
-        }
-
-        .contenedor {
-            width: 90%;
-            max-width: 1100px;
-            margin: 40px auto;
+        .subtitulo {
+            font-size: 15px;
+            color: #c7a2ff;
+            margin-bottom: 50px;
         }
 
         .grid {
+            width: 85%;
+            margin: auto;
             display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 25px;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
         }
 
         .card {
-            background: #1c1c1c;
+            background: #1a1a20;
             padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0px 4px 15px rgba(0,0,0,0.5);
-            transition: 0.3s;
-            border-left: 6px solid #9903cf;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0px 8px 20px rgba(0,0,0,0.7);
-            background: #242424;
-        }
-
-        .card h3 {
-            margin: 0 0 10px;
-            color: #d27bff;
+            border-radius: 15px;
+            border-left: 4px solid #b36bff;
+            box-shadow: 0 0 12px rgba(178, 111, 255, 0.25);
+            transition: all 0.35s ease;
         }
 
         .card a {
+            display: inline-block;
+            margin-top: 10px;
+            color: #d7b6ff;
             text-decoration: none;
-            color: #b3b3ff; /* Azul suave */
             font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
         }
 
-        .card a:hover {
-            color: #ffffff;
+        .card a::after {
+            content: "";
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: #b36bff;
+            box-shadow: 0 0 6px #b36bff;
+            transition: width 0.3s ease;
+        }
+
+        .card a:hover::after {
+            width: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 0 22px rgba(178, 111, 255, 0.45);
         }
 
         footer {
-            background: #1f1f1f;
-            color: #ccc;
-            text-align: center;
-            padding: 18px;
-            margin-top: 40px;
-            border-top: 2px solid #7e06cf;
+            margin-top: 60px;
+            padding: 20px;
+            font-size: 14px;
+            color: #a87cff;
+            text-shadow: 0 0 5px #b36bff;
         }
     </style>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-    <header>
-        <h1>Portafolio de Evidencias</h1>
-        <p>HTML • CSS • JavaScript — Actividades del curso</p>
-    </header>
+    <div class="side-line"></div>
 
-    <div class="contenedor">
+    <div class="container">
+        <h1>Portafolio de Evidencias</h1>
+        <div class="subtitulo">HTML · CSS · JavaScript — Actividades del curso</div>
+
         <div class="grid">
+
+            <!-- ORDEN EXACTO COMO EN TU IMAGEN -->
 
             <div class="card">
                 <h3>Actividad 02</h3>
-                <a href="trabajos/act02.html" target="_blank">Ver actividad →</a>
+                <a href="actividades/actividad02/index.html">Ver actividad →</a>
             </div>
 
             <div class="card">
                 <h3>Actividad 04</h3>
-                <a href="trabajos/act04.html" target="_blank">Ver actividad →</a>
+                <a href="actividades/actividad04/index.html">Ver actividad →</a>
             </div>
 
             <div class="card">
                 <h3>Actividad 06</h3>
-                <a href="trabajos/act06.html" target="_blank">Ver actividad →</a>
+                <a href="actividades/actividad06/index.html">Ver actividad →</a>
             </div>
 
             <div class="card">
                 <h3>Actividad 08</h3>
-                <a href="trabajos/act08.html" target="_blank">Ver actividad →</a>
+                <a href="actividades/actividad08/index.html">Ver actividad →</a>
             </div>
 
             <div class="card">
                 <h3>Actividad 10</h3>
-                <a href="trabajos/act10.html" target="_blank">Ver actividad →</a>
+                <a href="actividades/actividad10/index.html">Ver actividad →</a>
             </div>
 
             <div class="card">
                 <h3>Actividad 12</h3>
-                <a href="trabajos/act12.html" target="_blank">Ver actividad →</a>
+                <a href="actividades/actividad12/index.html">Ver actividad →</a>
             </div>
 
             <div class="card">
                 <h3>Actividad 14</h3>
-                <a href="trabajos/act14.html" target="_blank">Ver actividad →</a>
+                <a href="actividades/actividad14/index.html">Ver actividad →</a>
             </div>
 
         </div>
-    </div>
 
-    <footer>
-        © 2024 - Portafolio creado por Cristopher Euan- Desarrollo Web
-    </footer>
+        <footer>
+            © 2024 · Portafolio creado por Christopher Euan · Desarrollo Web
+        </footer>
+    </div>
 
 </body>
 </html>
